@@ -16,6 +16,13 @@
             border-radius: 5px;
             margin: 20px 0;
         }
+        .pack-info {
+            background: #e3f2fd;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -48,6 +55,10 @@
     <section class="form-section">
         <div class="container">
             <h2>Déposer un Litige</h2>
+
+            <!-- Affichage du pack sélectionné -->
+            <div id="pack-selected" class="pack-info"></div>
+
             <div id="confirmation" class="confirmation-message">
                 Votre dossier a été envoyé avec succès ! Nous vous contacterons sous 24h.
             </div>
@@ -58,9 +69,10 @@
                     id="litige-form"
                     enctype="multipart/form-data"
                 >
-                    <!-- Champs cachés pour FormSubmit (sans _next) -->
+                    <!-- Champs cachés pour FormSubmit -->
                     <input type="hidden" name="_subject" value="Nouveau litige - Demecall">
                     <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" id="pack" name="pack" value="">
 
                     <!-- Champs du formulaire -->
                     <div class="form-group">
@@ -70,6 +82,10 @@
                     <div class="form-group">
                         <label for="prenom">Prénom *</label>
                         <input type="text" id="prenom" name="prenom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form-group">
                         <label for="telephone">Téléphone *</label>
@@ -91,6 +107,7 @@
                             <option value="retard">Retard ou annulation</option>
                             <option value="frais">Litiges facturation</option>
                             <option value="travail-dissimule">Travail dissimulé</option>
+                            <option value="clauses">Clauses ou devis non respectés</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -145,26 +162,44 @@
 
     <!-- Script pour gérer l'envoi du formulaire et la redirection -->
     <script>
-        document.getElementById('litige-form').addEventListener('submit', function(e) {
-            e.preventDefault(); // Empêche la soumission classique
+        // Récupère le pack sélectionné depuis l'URL
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const pack = urlParams.get('pack');
 
-            // Désactive le bouton pendant l'envoi
+            if (pack) {
+                const packNames = {
+                    'diagnostic_gratuit': 'Diagnostic Gratuit',
+                    'mise_en_demeure': 'Pack Mise en Demeure',
+                    'recours_complet': 'Pack Recours Complet',
+                    'audit_prealable': 'Audit Préalable'
+                };
+
+                const packSelected = document.getElementById('pack-selected');
+                packSelected.style.display = 'block';
+                packSelected.textContent = `Vous avez sélectionné : ${packNames[pack] || pack}`;
+
+                // Stocke le pack dans le champ caché
+                document.getElementById('pack').value = packNames[pack] || pack;
+            }
+        });
+
+        // Gestion de l'envoi du formulaire
+        document.getElementById('litige-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
             const submitBtn = document.getElementById('submit-btn');
             submitBtn.disabled = true;
             submitBtn.textContent = "Envoi en cours...";
 
-            // Soumet le formulaire via fetch
             fetch(this.action, {
                 method: this.method,
                 body: new FormData(this)
             })
             .then(response => {
                 if (response.ok) {
-                    // Affiche le message de confirmation
                     document.getElementById('confirmation').style.display = 'block';
-                    // Masque le formulaire
                     document.querySelector('.form-container form').style.display = 'none';
-                    // Redirige vers services.html après 3 secondes
                     setTimeout(() => {
                         window.location.href = "services.html";
                     }, 3000);
