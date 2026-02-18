@@ -3,30 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nos Services - LitigeDemecall</title>
+    <title>Nos Tarifs - LitigeDemecall</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Styles pour les services et témoignages */
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+        /* Styles pour les tarifs et témoignages */
+        .pricing {
+            padding: 40px 0;
         }
-        .service-card {
+        .pricing-card {
             background: white;
-            padding: 20px;
+            padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
         }
-        .service-card div {
-            font-size: 40px;
-            margin-bottom: 15px;
+        .pricing-features {
+            list-style: none;
+            margin: 20px 0;
         }
-        .service-card h3 {
+        .pricing-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .pricing-features li:before {
+            content: "✓";
+            color: #4CAF50;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .price {
+            font-size: 24px;
+            font-weight: bold;
             color: #007BFF;
-            margin-bottom: 10px;
+            margin: 20px 0;
+        }
+        .success-message {
+            background: #e8f5e9;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
+            color: #2E7D32;
         }
         .testimonials {
             background: #f8f9fa;
@@ -86,82 +103,77 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Nos Domaines d'Intervention</h1>
-            <p>Nous intervenons sur tous les types de litiges liés au déménagement.</p>
+            <h1>Nos Tarifs</h1>
+            <p>Une expertise professionnelle pour un résultat concret.</p>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services">
+    <!-- Pricing Section -->
+    <section class="pricing">
         <div class="container">
-            <h2>Nos Services</h2>
-            <div class="service-grid">
-                <!-- Carte 1 : Casse et Dommages -->
-                <div class="service-card">
-                    <div>📦</div>
-                    <h3>Casse et Dommages</h3>
-                    <p>Votre mobilier est arrivé brisé ? Même sans réserves parfaites, nous activons la responsabilité du transporteur.</p>
-                </div>
-                <!-- Carte 2 : Retards et No-Show -->
-                <div class="service-card">
-                    <div>⏰</div>
-                    <h3>Retards et No-Show</h3>
-                    <p>Le camion n'est jamais venu ? Nous exigeons le remboursement immédiat et des dommages et intérêts.</p>
-                </div>
-                <!-- Carte 3 : Litiges Facturation -->
-                <div class="service-card">
-                    <div>💰</div>
-                    <h3>Litiges Facturation</h3>
-                    <p>Le prix a doublé à l'arrivée ? Nous bloquons les pratiques abusives et les chantages au déchargement.</p>
-                </div>
-                <!-- Carte 4 : Travail dissimulé -->
-                <div class="service-card">
-                    <div>🕵️</div>
-                    <h3>Travail dissimulé</h3>
-                    <p>Vous avez découvert que votre déménageur n'est pas déclaré ? Nous sécurisons votre situation juridique.</p>
-                </div>
-                <!-- Carte 5 : Clauses et Devis Non Respectés -->
-                <div class="service-card">
-                    <div>📄</div>
-                    <h3>Clauses et Devis Non Respectés</h3>
-                    <p>Emballage non fourni, livraison incomplète, ou fournitures manquantes ? Nous veillons au respect strict des engagements contractuels.</p>
-                </div>
-                <!-- Carte 6 : Audit Préalable -->
-                <div class="service-card">
-                    <div>🔍</div>
-                    <h3>Audit Préalable</h3>
-                    <p>Avant de signer, nous vérifions les clauses abusives, les licences du déménageur et les garanties proposées.</p>
-                </div>
+            <h2>Audit & Tarifs</h2>
+            <p class="pricing-subtitle">Nous proposons un tarif transparent et sans surprise.</p>
+
+            <!-- Pack 1 : Diagnostic Gratuit -->
+            <div class="pricing-card">
+                <h3>Diagnostic Gratuit</h3>
+                <ul class="pricing-features">
+                    <li>Analyse de votre contrat et devis</li>
+                    <li>Vérification des clauses abusives</li>
+                    <li>Estimation des indemnités possibles</li>
+                    <li>Conseils juridiques personnalisés</li>
+                </ul>
+                <div class="price">Gratuit</div>
+                <a href="contact.html" class="cta-button">Demander mon diagnostic</a>
             </div>
-        </div>
-    </section>
 
-    <!-- Section Audit -->
-    <section class="audit-section">
-        <div class="container">
-            <h2>Notre Processus d'Audit</h2>
-            <p>Un accompagnement complet pour sécuriser votre déménagement et résoudre les litiges.</p>
-            <div class="audit-steps">
-                <div class="step">
-                    <h3>1. Analyse du contrat</h3>
-                    <p>Nous vérifions les clauses abusives, les garanties et les engagements du déménageur.</p>
+            <!-- Pack 2 : Mise en Demeure -->
+            <div class="pricing-card">
+                <h3>Pack Mise en Demeure</h3>
+                <ul class="pricing-features">
+                    <li>Rédaction d'une mise en demeure formelle</li>
+                    <li>Envoi par courrier recommandé (AR)</li>
+                    <li>Suivi des réponses du déménageur</li>
+                    <li>Négociation pour obtenir réparation</li>
+                </ul>
+                <div class="price">199 €</div>
+                <div class="success-message">
+                    Ou 20 % des sommes récupérées (si succès).
                 </div>
-                <div class="step">
-                    <h3>2. Vérification des licences</h3>
-                    <p>Nous contrôlons que le déménageur est bien déclaré et assuré.</p>
+                <a href="contact.html" class="cta-button">Lancer mon recours</a>
+            </div>
+
+            <!-- Pack 3 : Recours Complet -->
+            <div class="pricing-card">
+                <h3>Pack Recours Complet</h3>
+                <ul class="pricing-features">
+                    <li>Mise en demeure + négociation avancée</li>
+                    <li>Saisie du médiateur (si applicable)</li>
+                    <li>Dépôt de plainte (DGCCRF, etc.)</li>
+                    <li>Accompagnement juridique complet</li>
+                    <li>Suivi jusqu'à indemnisation</li>
+                </ul>
+                <div class="price">499 €</div>
+                <div class="success-message">
+                    Ou 15 % des sommes récupérées (si succès).
                 </div>
-                <div class="step">
-                    <h3>3. Mise en demeure</h3>
-                    <p>Si nécessaire, nous envoyons une mise en demeure formelle pour obtenir réparation.</p>
+                <a href="contact.html" class="cta-button">Défendre mes droits</a>
+            </div>
+
+            <!-- Pack 4 : Audit Préalable -->
+            <div class="pricing-card">
+                <h3>Audit Préalable</h3>
+                <ul class="pricing-features">
+                    <li>Vérification des licences du déménageur</li>
+                    <li>Analyse des garanties et assurances</li>
+                    <li>Détection des clauses abusives</li>
+                    <li>Conseils pour sécuriser votre contrat</li>
+                </ul>
+                <div class="price">99 €</div>
+                <div class="success-message">
+                    Évitez les mauvaises surprises avant de signer !
                 </div>
-                <div class="step">
-                    <h3>4. Négociation</h3>
-                    <p>Nous négociions avec le déménageur pour obtenir une indemnisation juste.</p>
-                </div>
-                <div class="step">
-                    <h3>5. Recours juridique</h3>
-                    <p>En dernier recours, nous engageons des actions en justice si nécessaire.</p>
-                </div>
+                <a href="contact.html" class="cta-button">Sécuriser mon déménagement</a>
             </div>
         </div>
     </section>
@@ -169,10 +181,10 @@
     <!-- Témoignages Clients -->
     <section class="testimonials">
         <div class="container">
-            <h2>Ils nous font confiance</h2>
+            <h2>Nos Clients Témoignent</h2>
             <div class="testimonial-grid">
                 <div class="testimonial-item">
-                    <p>Grâce à LitigeDemecall, j’ai récupéré 1 200 € pour des meubles endommagés pendant mon déménagement. Leur équipe a été réactive et professionnelle !</p>
+                    <p>Grâce à LitigeDemecall, j’ai récupéré 1 200 € pour des meubles endommagés. Leur équipe a été réactive et professionnelle !</p>
                     <div class="testimonial-author">— Marie L., Paris</div>
                 </div>
                 <div class="testimonial-item">
@@ -186,6 +198,14 @@
                 <div class="testimonial-item">
                     <p>Ils ont détecté des clauses abusives dans mon contrat avant que je ne signe. J’ai évité une mauvaise surprise !</p>
                     <div class="testimonial-author">— Pierre D., Marseille</div>
+                </div>
+                <div class="testimonial-item">
+                    <p>Un service rapide et efficace. J’ai récupéré 800 € pour un retard de livraison. Très satisfait !</p>
+                    <div class="testimonial-author">— Jean P., Toulouse</div>
+                </div>
+                <div class="testimonial-item">
+                    <p>L’équipe a été à l’écoute et a résolu mon litige en moins d’une semaine. Je les recommande sans hésiter.</p>
+                    <div class="testimonial-author">— Claire T., Nantes</div>
                 </div>
             </div>
         </div>
@@ -223,28 +243,5 @@
             </div>
         </div>
     </footer>
-
-    <!-- Styles supplémentaires pour les sections ajoutées -->
-    <style>
-        .audit-section {
-            padding: 40px 0;
-            background: white;
-        }
-        .audit-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        .step {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-        }
-        .step h3 {
-            color: #007BFF;
-            margin-bottom: 10px;
-        }
-    </style>
 </body>
 </html>
