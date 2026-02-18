@@ -6,7 +6,7 @@
     <title>Nos Services - LitigeDemecall</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Style pour les cartes de services (si non défini dans style.css) */
+        /* Styles pour les services et témoignages */
         .service-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -28,17 +28,40 @@
             color: #007BFF;
             margin-bottom: 10px;
         }
-        .service-card p {
-            color: #666;
-            line-height: 1.5;
+        .testimonials {
+            background: #f8f9fa;
+            padding: 40px 0;
+            margin-top: 40px;
         }
-        /* Style pour les onglets "En travaux" */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .testimonial-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .testimonial-item::before {
+            content: '"';
+            font-size: 50px;
+            color: #007BFF;
+            position: absolute;
+            top: 5px;
+            left: 10px;
+        }
+        .testimonial-author {
+            font-weight: bold;
+            margin-top: 15px;
+            color: #007BFF;
+        }
         .en-travaux {
             color: #999 !important;
             cursor: not-allowed;
-        }
-        .en-travaux:hover {
-            color: #999 !important;
         }
     </style>
 </head>
@@ -79,58 +102,90 @@
                     <h3>Casse et Dommages</h3>
                     <p>Votre mobilier est arrivé brisé ? Même sans réserves parfaites, nous activons la responsabilité du transporteur.</p>
                 </div>
-
                 <!-- Carte 2 : Retards et No-Show -->
                 <div class="service-card">
                     <div>⏰</div>
                     <h3>Retards et No-Show</h3>
                     <p>Le camion n'est jamais venu ? Nous exigeons le remboursement immédiat et des dommages et intérêts.</p>
                 </div>
-
                 <!-- Carte 3 : Litiges Facturation -->
                 <div class="service-card">
                     <div>💰</div>
                     <h3>Litiges Facturation</h3>
                     <p>Le prix a doublé à l'arrivée ? Nous bloquons les pratiques abusives et les chantages au déchargement.</p>
                 </div>
-
                 <!-- Carte 4 : Travail dissimulé -->
                 <div class="service-card">
                     <div>🕵️</div>
                     <h3>Travail dissimulé</h3>
                     <p>Vous avez découvert que votre déménageur n'est pas déclaré ? Nous sécurisons votre situation juridique.</p>
                 </div>
-
-                <!-- NOUVELLE CARTE : Clauses et Devis Non Respectés -->
+                <!-- Carte 5 : Clauses et Devis Non Respectés -->
                 <div class="service-card">
                     <div>📄</div>
                     <h3>Clauses et Devis Non Respectés</h3>
-                    <p>Emballage non fourni, livraison incomplète, ou fournitures manquantes ? Nous veillons au respect strict des engagements contractuels : emballage, livraison dans les délais, et fournitures conformes au devis.</p>
+                    <p>Emballage non fourni, livraison incomplète, ou fournitures manquantes ? Nous veillons au respect strict des engagements contractuels.</p>
+                </div>
+                <!-- Carte 6 : Audit Préalable -->
+                <div class="service-card">
+                    <div>🔍</div>
+                    <h3>Audit Préalable</h3>
+                    <p>Avant de signer, nous vérifions les clauses abusives, les licences du déménageur et les garanties proposées.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section supplémentaire pour expliquer le service "Clauses et Devis Non Respectés" -->
-    <section class="service-details">
+    <!-- Section Audit -->
+    <section class="audit-section">
         <div class="container">
-            <h2>Clauses et Devis Non Respectés : Ce que nous faisons</h2>
-            <div class="details-grid">
-                <div class="detail-item">
-                    <h3>Emballage non conforme</h3>
-                    <p>Si le déménageur n'a pas utilisé les matériaux d'emballage promis (cartons renforcés, protections, etc.), nous exigeons un remboursement ou une compensation.</p>
+            <h2>Notre Processus d'Audit</h2>
+            <p>Un accompagnement complet pour sécuriser votre déménagement et résoudre les litiges.</p>
+            <div class="audit-steps">
+                <div class="step">
+                    <h3>1. Analyse du contrat</h3>
+                    <p>Nous vérifions les clauses abusives, les garanties et les engagements du déménageur.</p>
                 </div>
-                <div class="detail-item">
-                    <h3>Livraison incomplète</h3>
-                    <p>Des meubles ou cartons manquants ? Nous identifions les responsabilités et obtenons une indemnisation pour les objets perdus ou endommagés.</p>
+                <div class="step">
+                    <h3>2. Vérification des licences</h3>
+                    <p>Nous contrôlons que le déménageur est bien déclaré et assuré.</p>
                 </div>
-                <div class="detail-item">
-                    <h3>Fournitures manquantes</h3>
-                    <p>Si des fournitures promises (sangles, couvertures, etc.) n'ont pas été utilisées, nous réclamons leur valeur ou un dédommagement.</p>
+                <div class="step">
+                    <h3>3. Mise en demeure</h3>
+                    <p>Si nécessaire, nous envoyons une mise en demeure formelle pour obtenir réparation.</p>
                 </div>
-                <div class="detail-item">
-                    <h3>Délais non respectés</h3>
-                    <p>Un retard de livraison peut causer des désagréments. Nous évaluons les préjudices et négociions des compensations financières.</p>
+                <div class="step">
+                    <h3>4. Négociation</h3>
+                    <p>Nous négociions avec le déménageur pour obtenir une indemnisation juste.</p>
+                </div>
+                <div class="step">
+                    <h3>5. Recours juridique</h3>
+                    <p>En dernier recours, nous engageons des actions en justice si nécessaire.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages Clients -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Ils nous font confiance</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-item">
+                    <p>Grâce à LitigeDemecall, j’ai récupéré 1 200 € pour des meubles endommagés pendant mon déménagement. Leur équipe a été réactive et professionnelle !</p>
+                    <div class="testimonial-author">— Marie L., Paris</div>
+                </div>
+                <div class="testimonial-item">
+                    <p>Mon déménageur a doublé le prix à l’arrivée. LitigeDemecall a négocié un remboursement partiel et m’a évité un stress énorme. Je recommande !</p>
+                    <div class="testimonial-author">— Thomas R., Lyon</div>
+                </div>
+                <div class="testimonial-item">
+                    <p>Le camion n’est jamais venu le jour J. Grâce à leur mise en demeure, j’ai obtenu un remboursement intégral sous 10 jours. Merci !</p>
+                    <div class="testimonial-author">— Sophie M., Bordeaux</div>
+                </div>
+                <div class="testimonial-item">
+                    <p>Ils ont détecté des clauses abusives dans mon contrat avant que je ne signe. J’ai évité une mauvaise surprise !</p>
+                    <div class="testimonial-author">— Pierre D., Marseille</div>
                 </div>
             </div>
         </div>
@@ -169,25 +224,24 @@
         </div>
     </footer>
 
-    <!-- Style supplémentaire pour la section des détails -->
+    <!-- Styles supplémentaires pour les sections ajoutées -->
     <style>
-        .service-details {
-            background: #f8f9fa;
+        .audit-section {
             padding: 40px 0;
-        }
-        .details-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .detail-item {
             background: white;
+        }
+        .audit-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .step {
+            background: #f8f9fa;
             padding: 15px;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        .detail-item h3 {
+        .step h3 {
             color: #007BFF;
             margin-bottom: 10px;
         }
