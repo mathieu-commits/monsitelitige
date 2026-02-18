@@ -5,23 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - LitigeDemecall</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Style pour le message de confirmation */
+        .confirmation-message {
+            display: none;
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
     <header>
        <nav class="container">
-    <a href="index.html" class="logo">
-        <img src="logo.png" alt="Logo Demecall">
-    </a>
-    <ul class="nav-links">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Logo Demecall">
+            </a>
+            <ul class="nav-links">
                 <li><a href="services.html">Nos Services</a></li>
                 <li><a href="tarifs.html">Tarifs</a></li>
-                <li><a href="en-travaux.html" class="active">Avis Clients</a></li>
-                <li><a href="en-travaux.html" class="active">Avis Déménageurs</a></li>
+                <li><a href="en-travaux.html" class="en-travaux">Avis Clients</a></li>
+                <li><a href="en-travaux.html" class="en-travaux">Avis Déménageurs</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-    <a href="contact.html" class="cta-button">Déposer mon dossier</a>
-</nav>
+            <a href="contact.html" class="cta-button">Déposer mon dossier</a>
+        </nav>
     </header>
 
     <!-- Hero Section -->
@@ -36,20 +48,21 @@
     <section class="form-section">
         <div class="container">
             <h2>Déposer un Litige</h2>
+            <div id="confirmation" class="confirmation-message">
+                Votre dossier a été envoyé avec succès ! Nous vous contacterons sous 24h.
+            </div>
             <div class="form-container">
-                <!-- Formulaire adapté pour FormSubmit -->
                 <form
                     action="https://formsubmit.co/mathieu@expertdem.com"
                     method="POST"
                     id="litige-form"
                     enctype="multipart/form-data"
                 >
-                    <!-- Champs cachés pour FormSubmit -->
+                    <!-- Champs cachés pour FormSubmit (sans _next) -->
                     <input type="hidden" name="_subject" value="Nouveau litige - Demecall">
                     <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="https://mathieu-commits.github.io/monsitelitige/services.html"> <!-- Optionnel : page de remerciement -->
- 
-                    <!-- Champs du formulaire (identiques à ton code original) -->
+
+                    <!-- Champs du formulaire -->
                     <div class="form-group">
                         <label for="nom">Nom *</label>
                         <input type="text" id="nom" name="nom" required>
@@ -91,7 +104,7 @@
                             <p>Glissez-déposez vos fichiers ici ou cliquez pour parcourir</p>
                         </div>
                     </div>
-                    <button type="submit" class="cta-button">Envoyer mon dossier pour audit gratuit</button>
+                    <button type="submit" class="cta-button" id="submit-btn">Envoyer mon dossier pour audit gratuit</button>
                 </form>
             </div>
         </div>
@@ -130,18 +143,43 @@
         </div>
     </footer>
 
-    <!-- Script pour gérer l'envoi du formulaire (optionnel) -->
+    <!-- Script pour gérer l'envoi du formulaire et la redirection -->
     <script>
         document.getElementById('litige-form').addEventListener('submit', function(e) {
-            // Afficher un message de confirmation (optionnel)
-            alert("Votre dossier a été envoyé avec succès ! Nous vous contacterons sous 24h.");
+            e.preventDefault(); // Empêche la soumission classique
+
+            // Désactive le bouton pendant l'envoi
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Envoi en cours...";
+
+            // Soumet le formulaire via fetch
+            fetch(this.action, {
+                method: this.method,
+                body: new FormData(this)
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Affiche le message de confirmation
+                    document.getElementById('confirmation').style.display = 'block';
+                    // Masque le formulaire
+                    document.querySelector('.form-container form').style.display = 'none';
+                    // Redirige vers services.html après 3 secondes
+                    setTimeout(() => {
+                        window.location.href = "services.html";
+                    }, 3000);
+                } else {
+                    alert("Erreur lors de l'envoi. Veuillez réessayer.");
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "Envoyer mon dossier pour audit gratuit";
+                }
+            })
+            .catch(error => {
+                alert("Erreur : " + error.message);
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Envoyer mon dossier pour audit gratuit";
+            });
         });
     </script>
 </body>
 </html>
-
-
-
-
-
-
