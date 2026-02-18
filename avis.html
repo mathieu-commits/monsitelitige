@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avis Clients - LitigeDemecall</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles spécifiques pour cette page */
+        .avis-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .avis-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: var(--dark-color);
+        }
+
+        .avis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .avis-card {
+            background: var(--light-color);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .avis-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .avis-header h4 {
+            font-weight: 600;
+        }
+
+        .avis-header span {
+            color: #ffc107;
+        }
+
+        .avis-company {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .add-avis-button {
+            display: block;
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        .avis-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--light-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .rating-options {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .rating-options label {
+            font-size: 2rem;
+            color: #ddd;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+        .rating-options input:checked + label {
+            color: #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+    <a href="index.html" class="logo">  
+        <img src="logo.png" alt="Logo Demecall">
+    </a>
+     <ul class="nav-links">
+                <li><a href="services.html">Nos Services</a></li>
+                <li><a href="tarifs.html">Tarifs</a></li>
+                <li><a href="en-travaux.html" class="active">Avis Clients</a></li>
+                <li><a href="en-travaux.html" class="active">Avis Déménageurs</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+    <a href="contact.html" class="cta-button">Déposer mon dossier</a>
+</nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Avis de nos clients satisfaits</h1>
+            <p>Découvrez ce que nos clients disent de nos services de médiation.</p>
+        </div>
+    </section>
+
+    <!-- Avis Section -->
+    <section class="avis-section">
+        <div class="container">
+            <h2>Avis de nos clients satisfaits</h2>
+
+            <!-- Avis existants -->
+            <div class="avis-grid">
+                <div class="avis-card">
+                    <div class="avis-header">
+                        <h4>Sophie M.</h4>
+                        <div>
+                            <span>★★★★★</span>
+                        </div>
+                    </div>
+                    <div class="avis-company">Déménagements Martin</div>
+                    <p>Grâce à Demecall, j'ai récupéré 1 200 € pour mes meubles endommagés. Leur équipe a été très professionnelle et réactive. Je recommande sans hésitation !</p>
+                </div>
+                <div class="avis-card">
+                    <div class="avis-header">
+                        <h4>Thomas L.</h4>
+                        <div>
+                            <span>★★★★★</span>
+                        </div>
+                    </div>
+                    <div class="avis-company">Transports Rapid</div>
+                    <p>Mon déménagement a été annulé à la dernière minute. Demecall a obtenu un remboursement complet en moins d'une semaine. Service impeccable !</p>
+                </div>
+                <div class="avis-card">
+                    <div class="avis-header">
+                        <h4>Claire D.</h4>
+                        <div>
+                            <span>★★★★☆</span>
+                        </div>
+                    </div>
+                    <div class="avis-company">Déménagements Pro</div>
+                    <p>J'ai eu un problème de facturation. Demecall a négocié une réduction de 30% sur ma facture. Très satisfait de leur intervention.</p>
+                </div>
+            </div>
+
+            <!-- Bouton pour ajouter un avis -->
+            <div class="add-avis-button">
+                <a href="#add-avis" class="cta-button">Laisser un avis sur notre service</a>
+            </div>
+
+            <!-- Formulaire pour ajouter un avis -->
+            <div class="avis-form-container" id="add-avis">
+                <h3>Laisser un avis sur notre service</h3>
+                <form id="avis-form">
+                    <div class="form-group">
+                        <label for="avis-nom">Votre nom *</label>
+                        <input type="text" id="avis-nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="avis-email">Votre email *</label>
+                        <input type="email" id="avis-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="avis-societe">Société de déménagement concernée *</label>
+                        <input type="text" id="avis-societe" placeholder="Ex: Déménagements Martin" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Notez notre service *</label>
+                        <div class="rating-options">
+                            <input type="radio" id="star5" name="rating" value="5" required>
+                            <label for="star5">★</label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4">★</label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3">★</label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2">★</label>
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1">★</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="avis-titre">Titre de votre avis *</label>
+                        <input type="text" id="avis-titre" placeholder="Ex: Service excellent" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="avis-contenu">Votre avis détaillé *</label>
+                        <textarea id="avis-contenu" placeholder="Décrivez votre expérience avec notre service de médiation..." required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Publier mon avis</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>LitigeDemecall</h3>
+                    <p>Spécialiste de la résolution de litiges de déménagement.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liens utiles</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="services.html">Nos Services</a></li>
+                        <li><a href="tarifs.html">Tarifs</a></li>
+                        <li><a href="avis.html">Avis Clients</a></li>
+                        <li><a href="avis-demenageurs.html">Avis Déménageurs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>📞 01 23 45 67 89</li>
+                        <li>✉️ contact@litigedemecall.com</li>
+                        <li>📍 Paris, France</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2023 LitigeDemecall. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestion du formulaire d'avis
+            const avisForm = document.getElementById('avis-form');
+            if (avisForm) {
+                avisForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    // Récupérer les valeurs du formulaire
+                    const nom = document.getElementById('avis-nom').value;
+                    const email = document.getElementById('avis-email').value;
+                    const societe = document.getElementById('avis-societe').value;
+                    const rating = document.querySelector('input[name="rating"]:checked').value;
+                    const titre = document.getElementById('avis-titre').value;
+                    const contenu = document.getElementById('avis-contenu').value;
+
+                    // Afficher un message de confirmation
+                    alert(`Merci, ${nom} ! Votre avis a été soumis avec succès. Il sera publié après vérification par notre équipe.`);
+
+                    // Réinitialiser le formulaire
+                    this.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

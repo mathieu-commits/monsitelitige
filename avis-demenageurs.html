@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avis Déménageurs - LitigeDemecall</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header (identique à ton code existant) -->
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Logo Demecall">
+            </a>
+           <ul class="nav-links">
+                <li><a href="services.html">Nos Services</a></li>
+                <li><a href="tarifs.html">Tarifs</a></li>
+                <li><a href="en-travaux.html" class="active">Avis Clients</a></li>
+                <li><a href="en-travaux.html" class="active">Avis Déménageurs</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="contact.html" class="cta-button">Déposer mon dossier</a>
+        </nav>
+    </header>
+
+    <!-- Section pour soumettre un avis -->
+    <section class="form-section">
+        <div class="container">
+            <h2>Laisser un avis sur un déménageur</h2>
+            <div class="form-container">
+                <form
+                    action="https://formsubmit.co/mathieu@expertdem.com"
+                    method="POST"
+                    id="avis-demenageur-form"
+                >
+                    <!-- Champs cachés pour FormSubmit -->
+                    <input type="hidden" name="_subject" value="Nouvel avis sur un déménageur - Demecall">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://ton-site.com/merci-avis.html">
+
+                    <!-- Champs du formulaire -->
+                    <div class="form-group">
+                        <label for="nom">Votre nom *</label>
+                        <input type="text" id="nom" name="nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Votre e-mail *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="societe">Nom de la société de déménagement *</label>
+                        <input type="text" id="societe" name="societe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="note">Note (1 à 5) *</label>
+                        <select id="note" name="note" required>
+                            <option value="" disabled selected>Sélectionnez une note</option>
+                            <option value="1">1 - Très mauvais</option>
+                            <option value="2">2 - Mauvais</option>
+                            <option value="3">3 - Moyen</option>
+                            <option value="4">4 - Bon</option>
+                            <option value="5">5 - Excellent</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="commentaire">Votre avis *</label>
+                        <textarea id="commentaire" name="commentaire" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Envoyer mon avis</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page (identique à ton code existant) -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>LitigeDemecall</h3>
+                    <p>Spécialiste de la résolution de litiges de déménagement.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liens utiles</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="services.html">Nos Services</a></li>
+                        <li><a href="tarifs.html">Tarifs</a></li>
+                        <li><a href="avis.html">Avis Clients</a></li>
+                        <li><a href="avis-demenageurs.html">Avis Déménageurs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>📞 01 23 45 67 89</li>
+                        <li>✉️ contact@litigedemecall.com</li>
+                        <li>📍 Paris, France</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2023 LitigeDemecall. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script pour gérer l'envoi et le stockage local des avis -->
+    <script>
+        document.getElementById('avis-demenageur-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Empêche l'envoi direct du formulaire
+
+            // Récupérer les valeurs du formulaire
+            const formData = {
+                id: Date.now(),
+                nom: document.getElementById('nom').value,
+                email: document.getElementById('email').value,
+                societe: document.getElementById('societe').value,
+                note: document.getElementById('note').value,
+                commentaire: document.getElementById('commentaire').value,
+                date: new Date().toISOString().split('T')[0]
+            };
+
+            // Stocker l'avis dans pending-avis-demenageurs.json (simulé avec localStorage)
+            let pendingAvis = JSON.parse(localStorage.getItem('pendingAvisDemenageurs')) || [];
+            pendingAvis.push(formData);
+            localStorage.setItem('pendingAvisDemenageurs', JSON.stringify(pendingAvis));
+
+            // Envoyer le formulaire à FormSubmit
+            this.submit();
+
+            // Afficher un message de confirmation
+            alert("Merci pour votre avis ! Il sera validé sous peu.");
+        });
+    </script>
+</body>
+</html>

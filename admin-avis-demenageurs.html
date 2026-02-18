@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - Avis Déménageurs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .avis-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        .valider-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .valider-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gestion des avis sur les déménageurs</h1>
+
+        <!-- Section des avis en attente -->
+        <h2>Avis en attente de validation</h2>
+        <div id="pending-avis-list"></div>
+
+        <!-- Section des avis validés -->
+        <h2>Avis validés</h2>
+        <div id="validated-avis-list"></div>
+    </div>
+
+    <script>
+        // Charger et afficher les avis en attente
+        function loadPendingAvis() {
+            const pendingAvis = JSON.parse(localStorage.getItem('pendingAvisDemenageurs')) || [];
+            const container = document.getElementById('pending-avis-list');
+
+            if (pendingAvis.length === 0) {
+                container.innerHTML = "<p>Aucun avis en attente.</p>";
+                return;
+            }
+
+            container.innerHTML = pendingAvis.map(avis =>
+                `<div class="avis-item">
+                    <h3>${avis.nom} (${avis.societe})</h3>
+                    <p><strong>Note :</strong> ${avis.note}/5</p>
+                    <p>${avis.commentaire}</p>
+                    <p><small>Posté le ${avis.date}</small></p>
+                    <button class="valider-btn" onclick="validateAvis(${avis.id})">Valider</button>
+                </div>`
+            ).join('');
+        }
+
+        // Charger et afficher les avis validés
+        function loadValidatedAvis() {
+            const validatedAvis = JSON.parse(localStorage.getItem('validatedAvisDemenageurs')) || [];
+            const container = document.getElementById('validated-avis-list');
+
+            if (validatedAvis.length === 0) {
+                container.innerHTML = "<p>Aucun avis validé.</p>";
+                return;
+            }
+
+            container.innerHTML = validatedAvis.map(avis =>
+                `<div class="avis-item">
+                    <h3>${avis.nom} (${avis.societe})</h3>
+                    <p><strong>Note :</strong> ${avis.note}/5</p>
+                    <p>${avis.commentaire}</p>
+                    <p><small>Posté le ${avis.date}</small></p>
+                </div>`
+            ).join('');
+        }
+
+        // Valider un avis
+        function validateAvis(avisId) {
+            let pendingAvis = JSON.parse(localStorage.getItem('pendingAvisDemenageurs')) || [];
+            let validatedAvis = JSON.parse(localStorage.getItem('validatedAvisDemenageurs')) || [];
+
+            const avisIndex = pendingAvis.findIndex(avis => avis.id === avisId);
+            if (avisIndex !== -1) {
+                const avisToValidate = pendingAvis[avisIndex];
+                validatedAvis.push(avisToValidate);
+                pendingAvis.splice(avisIndex, 1);
+
+                localStorage.setItem('pendingAvisDemenageurs', JSON.stringify(pendingAvis));
+                localStorage.setItem('validatedAvisDemenageurs', JSON.stringify(validatedAvis));
+
+                loadPendingAvis();
+                loadValidatedAvis();
+                alert("Avis validé avec succès !");
+            }
+        }
+
+        // Charger les avis au démarrage
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPendingAvis();
+            loadValidatedAvis();
+        });
+    </script>
+</body>
+</html>
